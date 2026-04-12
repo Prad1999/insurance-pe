@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: fct_enquiries
+    columns:
+      - name: enquiry_version_key
+        tests:
+          - not_null
+          - unique
+
+  - name: fct_policies
+    columns:
+      - name: policy_id
+        tests:
+          - not_null
+          - unique
+      - name: enquiry_version_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('int_enquiry_versions')
+                field: enquiry_version_key
+
+  - name: fct_policy_transactions
+    columns:
+      - name: policy_id
+        tests:
+          - not_null
+      - name: transaction_event_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['MTA', 'BOLT_ON', 'CANCELLATION']
+
+  - name: dim_policy
+    columns:
+      - name: policy_id
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_product
+    columns:
+      - name: product_code
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_date
+    columns:
+      - name: calendar_date
+        tests:
+          - not_null
+          - unique

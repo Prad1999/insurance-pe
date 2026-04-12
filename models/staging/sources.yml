@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw
+    database: POLICYEXPERT_DB
+    schema: RAW 
+    tables: 
+      - name: policies
+      - name: enquiries
+      - name: cancellations
+      - name: bolt_ons
+      - name: mtas 
+

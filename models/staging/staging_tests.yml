@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: stg_policies
+    columns:
+      - name: policy_id
+        tests:
+          - not_null
+      - name: enquiry_version_key
+        tests:
+          - not_null
+      - name: is_excluded
+        tests:
+          - not_null
+
+  - name: stg_enquiries
+    columns:
+      - name: enquiry_version_key
+        tests:
+          - not_null
+      - name: enquiry_key
+        tests:
+          - not_null
+      - name: is_quoted
+        tests:
+          - not_null
+      - name: is_excluded
+        tests:
+          - not_null
+
+  - name: stg_cancellations
+    columns:
+      - name: policy_id
+        tests:
+          - not_null
+      - name: cancellation_effective_date
+        tests:
+          - not_null
+
+  - name: stg_bolt_ons
+    columns:
+      - name: policy_id
+        tests:
+          - not_null
+      - name: product_code
+        tests:
+          - not_null
+      - name: is_excluded
+        tests:
+          - not_null
+
+  - name: stg_mtas
+    columns:
+      - name: policy_id
+        tests:
+          - not_null
+      - name: adjustment_effective_date
+        tests:
+          - not_null
+      - name: is_excluded
+        tests:
+          - not_null
+      - name: is_rated
+        tests:
+          - not_null
