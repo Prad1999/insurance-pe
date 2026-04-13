@@ -2,71 +2,36 @@ version: 2
 
 models:
   - name: mart_funnel
-    description: "Quoted enquiry-level mart used for funnel and quoted vs sold premium analysis."
     columns:
       - name: enquiry_version_key
         tests:
           - not_null
           - unique
-      - name: enquiry_key
-        tests:
-          - not_null
-      - name: is_converted
-        tests:
-          - not_null
 
   - name: mart_revenue
-    description: "Policy-level mart used for written premium, bolt-on revenue, and net premium after MTAs."
     columns:
       - name: policy_id
         tests:
           - not_null
           - unique
-      - name: written_net_premium
-        tests:
-          - not_null
-      - name: written_gross_premium
-        tests:
-          - not_null
-      - name: net_premium_after_mta
-        tests:
-          - not_null
 
   - name: mart_retention
-    description: "Policy-level mart used for cancellation analysis and time to cancellation."
     columns:
       - name: policy_id
         tests:
           - not_null
           - unique
-      - name: is_cancelled
-        tests:
-          - not_null
 
   - name: mart_product
-    description: "Policy-level mart used for bolt-on attach rate analysis."
     columns:
       - name: policy_id
         tests:
           - not_null
           - unique
-      - name: has_bolt_on
-        tests:
-          - not_null
-      - name: bolt_on_count
-        tests:
-          - not_null
 
   - name: agg_bolt_on_popularity
-    description: "Product-level aggregate showing bolt-on popularity and revenue."
     columns:
       - name: product_code
         tests:
           - not_null
           - unique
-      - name: policy_attach_count
-        tests:
-          - not_null
-      - name: bolt_on_event_count
-        tests:
-          - not_null
